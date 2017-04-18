@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Install RSpec and Capybara for testing
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'capybara', '~> 2.9', '>= 2.9.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
