@@ -1,0 +1,25 @@
+<%= form_for @profile do |f| %>
+  <% @profile.errors.full_messages.each do |msg| %>
+    <p class="alert alert-danger"><%= msg %></p>
+  <% end %>
+
+  <div class="form-group">
+    <label class="sr-only">First Name</label>
+    <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="sr-only">Last Name</label>
+    <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="sr-only">Photo</label>
+    <%= f.text_area :photo, rows: 5, placeholder: "Upload your Avatar", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", root_path, class: "btn btn-default" %>
+  </div>
+<% end %>
