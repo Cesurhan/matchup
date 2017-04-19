@@ -22,4 +22,13 @@ RSpec.describe User, type: :model do
       expect(User.new).to_not be_teacher
     end
   end
+
+  describe "association with profile" do
+    let!(:profile) { create :profile }
+    let(:user) { create :user, profile: profile }
+
+    it "is valid without a profile" do
+      expect(user.errors).to_not have_key(:profile)
+    end
+  end
 end
