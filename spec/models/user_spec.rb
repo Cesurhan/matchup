@@ -13,5 +13,13 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors).to have_key(:password)
     end
+
+    it "isn't admin by default" do
+      expect(User.new).to_not be_admin
+    end
+
+    it "isn't teacher by default" do
+      expect(User.new).to_not be_teacher
+    end
   end
 end
