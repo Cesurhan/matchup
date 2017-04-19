@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419083624) do
+ActiveRecord::Schema.define(version: 20170419132332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "photo"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_matches_on_user_id", using: :btree
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "photo",      default: "http://res.cloudinary.com/dr08wglx5/image/upload/v1492607614/avatar_hjmyte.png"
+    t.integer  "user_id"
+    t.datetime "created_at",                                                                                            null: false
+    t.datetime "updated_at",                                                                                            null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -34,4 +54,6 @@ ActiveRecord::Schema.define(version: 20170419083624) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "matches", "users"
+  add_foreign_key "profiles", "users"
 end
