@@ -39,6 +39,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Install Factory Girl for fixture replacement
+  gem 'factory_girl_rails', '4.7.0'
+  # Install Faker for generating fake data
+  gem 'faker', '1.6.6'
   # Install RSpec and Capybara for testing
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'capybara', '~> 2.9', '>= 2.9.1'
