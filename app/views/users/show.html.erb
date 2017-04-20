@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+
+      <div class="container">
+        <div class="card hovercard">
+          <img src="http://placehold.it/300x200/000000/&text=Header" alt=""/>
+          <div class="avatar">
+            <% if @user.profile != nil %>
+            <%= image_tag @user.profile.photo %>
+          <% else %>
+            <img src="http://placehold.it/80X80/333333/&text=Head" alt=""/>
+            <% end %>
+          </div>
+          <div class="info">
+            <div class="title">
+              <% if @user.profile != nil %>
+              <%= @user.profile.full_name %>
+            <% else %>
+              <%= @user.email %>
+              <% end %>
+            </div>
+            <div class="desc">
+              <% if @user.admin %>
+              <span class="label label-danger">Admin</span>
+              <% elsif @user.teacher %>
+              <span class="label label-success">Teacher</span>
+            <% else %>
+              <span class="label label-default">Student</span>
+              <% end %>
+
+            </div>
+            <div class="desc">Lorem ipsum</div>
+
+          </div>
+          <div class="bottom">
+
+            <% if @user.admin %>
+            <button class="btn btn-danger">Demote</button>
+            <% elsif @user.teacher %>
+            <button class="btn btn-danger">Demote</button>
+            <button class="btn btn-primary">Promote</button>
+          <% else %>
+            <button class="btn btn-primary">Promote</button>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

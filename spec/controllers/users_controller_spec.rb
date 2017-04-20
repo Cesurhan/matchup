@@ -8,5 +8,5 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:found)
     end
   end
-  
+
 end

@@ -23,7 +23,7 @@
             <span class="label label-default">Student</span>
             <% end %>
 
-            <%= link_to "", root_path, class: "btn icon-pencil" %>
+            <%= link_to "", user_path(user.id), class: "btn icon-pencil" %>
           </p>
         <% else %>
           <%= user.email %>
@@ -37,7 +37,7 @@
             <span class="label label-default">Student</span>
             <% end %>
 
-            <%= link_to "", root_path, class: "btn icon-pencil" %>
+            <%= link_to "", user_path(user.id), class: "btn icon-pencil" %>
           </p>
           <% end %>
         </li>
