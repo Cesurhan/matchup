@@ -2,6 +2,10 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <% if user_signed_in? && current_user.admin?%>
+      <div class="text-center">
+        <h3>Users</h3>
+      </div>
+      <hr>
       <ul class="list-group">
         <% @users.each do |user| %>
 
