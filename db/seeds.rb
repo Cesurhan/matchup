@@ -1,3 +1,7 @@
+Profile.delete_all
+Match.delete_all
+User.delete_all
+
 # admins
 admin1 = User.create!(email: 'ces@matchup.com', password: 'qwe123', admin: true)
 admin2 = User.create!(email: 'wouter@matchup.com', password: 'qwe123', admin: true)
@@ -23,3 +27,13 @@ student9 = User.create!(email: 'student9@matchup.com', password: 'qwe123')
 student10 = User.create!(email: 'student10@matchup.com', password: 'qwe123')
 
 puts "#{User.all.size} students created"
+
+
+# matches
+match1 = Match.create!(match_id: 6, user_id: student5.id)
+match2 = Match.create!(match_id: 7, user_id: student6.id)
+match3 = Match.create!(match_id: 8, user_id: student7.id)
+match4 = Match.create!(match_id: 9, user_id: student8.id)
+match5 = Match.create!(match_id: 10, user_id: student9.id)
+
+puts "#{Match.all.size} matches created"
