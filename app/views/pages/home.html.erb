@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-6 col-md-offset-3">
       <div class="text-center">
         <h1>Your Matches</h1>
       </div>
@@ -18,11 +18,12 @@
 
         <%= @match_user.profile.first_name %>
         <%= @match_user.profile.last_name %>
+
+      <% else %>
+        <%= @match_user.email %>
+        (No Profile!)
       </h5>
-    <% else %>
-      <h1>Your match has no profile!</h1>
-      <h2>Here his/her email:
-        <%= @match_user.email %></h2>
+
       <% end %>
     <% else %>
       <h1>You have no match!</h1>
