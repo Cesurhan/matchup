@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
+  before_action do
+    redirect_to root_path if !current_user.admin
+  end
+
   def index
     @users = User.all
-    if !current_user.admin
-      redirect_to root_path
-    end
   end
 
   def show
     @user = User.find(params[:id])
-    if !current_user.admin
-      redirect_to root_path
-    end
   end
 
   def update
