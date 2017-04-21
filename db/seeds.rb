@@ -30,10 +30,10 @@ puts "#{User.all.size} students created"
 
 
 # matches
-match1 = Match.create!(match_id: 6, user_id: student5.id)
-match2 = Match.create!(match_id: 7, user_id: student6.id)
-match3 = Match.create!(match_id: 8, user_id: student7.id)
-match4 = Match.create!(match_id: 9, user_id: student8.id)
-match5 = Match.create!(match_id: 10, user_id: student9.id)
+match1 = Match.create!(match_id: 6, user_id: student5.id, date: '2017-04-21')
+match2 = Match.create!(match_id: 7, user_id: student6.id, date: '2017-04-21')
+match3 = Match.create!(match_id: 8, user_id: student7.id, date: '2017-04-21')
+match4 = Match.create!(match_id: 9, user_id: student8.id, date: '2017-04-21')
+match5 = Match.create!(match_id: 10, user_id: student9.id, date: '2017-04-20')
 
 puts "#{Match.all.size} matches created"
