@@ -30,40 +30,90 @@
       <h1>You have no match!</h1>
       <% end %>
       <% end %>
-      <% end %>
-      <% end %>
 
-      <div class="text-center">
-        <h3>- Past Matches -</h3>
-      </div>
-      <hr>
-      <ul class="list-group">
-        <% @matches.each do |match| %>
-        <% if match.user_id == current_user.id %>
-        <% @match_id = match.match_id %>
-        <% if match.date != Date.today %>
-        <li class="list-group-item list-group-item-warning">
-          <%= match.date %>:
+      <% elsif match.match_id == current_user.id %>
+      <% @match_id = match.user_id %>
+      <% if match.date == Date.today %>
+      <li class="list-group-item list-group-item-warning">
+        <%= match.date %>:
 
-          <% @match_user = User.find_by id: @match_id %>
+        <% @match_user = User.find_by id: @match_id %>
 
-          <% if @match_user != nil %>
-          <% if @match_user.profile != nil %>
-          <%= @match_user.profile.full_name %>
+        <% if @match_user != nil %>
+        <% if @match_user.profile != nil %>
+        <%= @match_user.profile.full_name %>
 
-        <% else %>
-          <%= @match_user.email %>
-          (No Profile!)
-        </li>
-
-        <% end %>
       <% else %>
-      </ul>
-      <h1>You have no match!</h1>
+        <%= @match_user.email %>
+        (No Profile!)
+      </li>
+
       <% end %>
-      <% end %>
-      <% end %>
-      <% end %>
+    <% else %>
+    </ul>
+    <h1>You have no match!</h1>
+    <% end %>
+    <% end %>
+
+    <% end %>
+    <% end %>
+
+    <div class="text-center">
+      <h3>- Past Matches -</h3>
     </div>
-  </div>
+    <hr>
+    <ul class="list-group">
+      <% @matches.each do |match| %>
+      <% if match.user_id == current_user.id %>
+      <% @match_id = match.match_id %>
+      <% if match.date != Date.today %>
+      <li class="list-group-item list-group-item-warning">
+        <%= match.date %>:
+
+        <% @match_user = User.find_by id: @match_id %>
+
+        <% if @match_user != nil %>
+        <% if @match_user.profile != nil %>
+        <%= @match_user.profile.full_name %>
+
+      <% else %>
+        <%= @match_user.email %>
+        (No Profile!)
+      </li>
+
+      <% end %>
+    <% else %>
+    </ul>
+    <h1>You have no match!</h1>
+    <% end %>
+    <% end %>
+
+    <% elsif match.match_id == current_user.id %>
+    <% @match_id = match.user_id %>
+    <% if match.date != Date.today %>
+    <li class="list-group-item list-group-item-warning">
+      <%= match.date %>:
+
+      <% @match_user = User.find_by id: @match_id %>
+
+      <% if @match_user != nil %>
+      <% if @match_user.profile != nil %>
+      <%= @match_user.profile.full_name %>
+
+    <% else %>
+      <%= @match_user.email %>
+      (No Profile!)
+    </li>
+
+    <% end %>
+  <% else %>
+  </ul>
+  <h1>You have no match!</h1>
+  <% end %>
+  <% end %>
+
+  <% end %>
+  <% end %>
+</div>
+</div>
 </div>

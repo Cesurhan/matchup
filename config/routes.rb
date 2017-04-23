@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :profiles, only: [:new,   :edit, :create, :update]
-  resources :matches,  only: [:index, :edit, :create, :update]
+
+  resources :matches, :destroy do
+    collection do
+      get 'remove_all'
+    end
+  end
+
   resources :users,    only: [:index, :edit, :show,   :update]
 end

@@ -1,13 +1,27 @@
 <div class="container">
+  <%= link_to "[Delete All]", remove_all_matches_path, method: :get , class: "btn btn-danger" %>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <% if user_signed_in? && current_user.admin?%>
+    <% (Date.today.beginning_of_week()..Date.today.end_of_week()). each do |day| %>
+    <div class="row">
       <div class="text-center">
-        <h3>Matches</h3>
+        <% if day == Date.today %>
+        <h3>
+          <span class="label label-info"><%= day %></span>
+        </h3>
+      <% else %>
+        <h3><%= day %></h3>
+        <% end %>
       </div>
       <hr>
       <ul class="list-group">
+        <% @matches_of_the_day = [] %>
         <% @matches.each do |match| %>
+        <% if match.date == day %>
+        <% @matches_of_the_day << match %>
+        <% end %>
+        <% end %>
+
+        <% @matches_of_the_day.each do |match| %>
 
         <% @user_id = match.user_id %>
         <% @match_id = match.match_id %>
@@ -16,30 +30,30 @@
         <% @match = User.find_by id: @match_id %>
 
         <li class="list-group-item list-group-item-warning">
-          <b><%= match.date%>:
+          <b><%= match.date %>:
           </b>
           <% if @user.profile != nil %>
           <%= @user.profile.full_name %>
+
         <% else %>
           <%= @user.email %>
           <% end %>
           <% if @match.profile != nil %>
-          <p class="pull-right"><%= @match.profile.full_name %>
-            <%= link_to "", root_path, class: "btn icon-pencil" %>
-          </p>
+          <%= @match.profile.full_name %>
         <% else %>
-          <p class="pull-right"><%= @match.email %>
-            <%= link_to "", root_path, class: "btn icon-pencil" %></p>
+          <%= @match.email %>
           <% end %>
         </li>
-
         <% end %>
       </ul>
-    <% else %>
-      <h3>You are not authorized to be on this page!</h3>
-      <% end %>
+      <div class="text-center">
+        <% if @matches_of_the_day == []%>
+        <%= link_to "Generate", matches_path(date: day), method: :create , class: "btn btn-success" %>
+      <% else %>
+        <%= link_to "Delete", remove_all_matches_path(date: day), method: :get , class: "btn btn-danger" %>
+        <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
-</div>
-</div>
 </div>
