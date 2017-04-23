@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :match do
-    match_id        { Faker::Number.between(1, 10) }
+    date            { Date.today   }
+    match_id        { build(:user) }
     user_id         { build(:user) }
   end
 end
