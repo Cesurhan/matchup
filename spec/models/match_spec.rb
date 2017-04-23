@@ -7,14 +7,29 @@ RSpec.describe Match, type: :model do
       match.valid?
       expect(match.errors).to have_key(:match_id)
     end
+
+    it "is invalid without a user_id" do
+      user = Match.new(user_id: "")
+      user.valid?
+      expect(user.errors).to have_key(:user_id)
+    end
+
+    it "is invalid without a date" do
+      date = Match.new(date: "")
+      date.valid?
+      expect(date.errors).to have_key(:date)
+    end
   end
 
   describe "association with user" do
-    let!(:user) { create :user }
-    let(:match) { create :match, user: user }
+    let(:student1) { create :user }
+    let(:student2) { create :user }
 
-    it "is valid without a user" do
-      expect(user.errors).to_not have_key(:user)
+    let(:match) { create :match, match_id: student1.id, user_id: student2.id }
+
+    it "belongs to students" do
+      expect(match.match_id).to eq(student1.id)
+      expect(match.user_id).to eq(student2.id)
     end
   end
 end
