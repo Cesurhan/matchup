@@ -66,7 +66,7 @@
       <% @matches.each do |match| %>
       <% if match.user_id == current_user.id %>
       <% @match_id = match.match_id %>
-      <% if match.date != Date.today %>
+      <% if match.date < Date.today %>
       <li class="list-group-item list-group-item-warning">
         <%= match.date %>:
 
@@ -90,7 +90,7 @@
 
     <% elsif match.match_id == current_user.id %>
     <% @match_id = match.user_id %>
-    <% if match.date != Date.today %>
+    <% if match.date < Date.today %>
     <li class="list-group-item list-group-item-warning">
       <%= match.date %>:
 
